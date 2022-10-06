@@ -12,7 +12,7 @@ from django.db import models, transaction
 from django.conf import settings
 from django.core.cache import caches as django_cache
 from django.core.files.storage import SuspiciousFileOperation
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 from django.db import transaction
 from django.urls import reverse
@@ -22,6 +22,9 @@ from jsonfield import JSONCharField
 from . mixins import UpdateScriptsMixin, WooeyPy2Mixin
 from .. import settings as wooey_settings
 from .. backend import utils
+
+User = settings.AUTH_USER_MODEL
+
 
 # TODO: Handle cases where celery is not setup but specified to be used
 tasks = importlib.import_module(wooey_settings.WOOEY_CELERY_TASKS)
